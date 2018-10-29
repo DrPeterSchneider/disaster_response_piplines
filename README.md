@@ -15,11 +15,12 @@ enter a message and an algorithm labels the messages with the matching categorie
     - process_data.py : ETL-pipeline for cleaning, merging and storing the data from CSV-files
     - DisasterResponse.db : database with cleaned data from the CSV-files
     - train_classifier.py : MLP-pipeline which tokenizes the text messages and builds a model
-    	after a crossvalidated grid search. The model is evaluated und saved in pickle-file.
+    	after a crossvalidated grid search. The model is evaluated und saved in a pickle-file.
 	- finanlized_model.pkl : the model from the MLP-pipeline is saved here
 	- run.py : file to build and run the webapp with flask and plotly
-    - go.html : webapp design especially for the message query
     - master.html: webapp design for the webapp
+    - go.html : webapp design especially for the message query
+    
     
 
 ### Instructions:
@@ -27,6 +28,7 @@ enter a message and an algorithm labels the messages with the matching categorie
 
     - To run ETL pipeline that cleans data and stores in database
         `python data/process_data.py data/disaster_messages.csv data/disaster_categories.csv data/DisasterResponse.db`
+        
     - To run ML pipeline that trains classifier and saves
         `python models/train_classifier.py data/DisasterResponse.db models/finanlized_model.pkl`
 

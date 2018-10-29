@@ -7,7 +7,7 @@ from nltk.tokenize import word_tokenize
 
 from flask import Flask
 from flask import render_template, request, jsonify
-from plotly.graph_objs import Bar
+from plotly.graph_objs import Bar, Heatmap
 from sklearn.externals import joblib
 from sqlalchemy import create_engine
 
@@ -43,6 +43,10 @@ def index():
     genre_counts = df.groupby('genre').count()['message']
     genre_names = list(genre_counts.index)
     
+    names_categories = list(df.iloc[:,4:].columns)
+    mapping_categories = df.iloc[:,4:].corr().values
+    
+    
     # create visuals
     # TODO: Below is an example - modify to create your own visuals
     graphs = [
@@ -63,7 +67,20 @@ def index():
                     'title': "Genre"
                 }
             }
-        }
+        },
+        {
+            'data': [
+                Heatmap(
+                    x=names_categories,
+                    y=names_categories[::-1],
+                    z=mapping_categories
+                )    
+            ],
+
+            'layout': {
+                'title': 'Category Correlations'
+            }
+        }  
     ]
     
     # encode plotly graphs in JSON

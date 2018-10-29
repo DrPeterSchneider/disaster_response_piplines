@@ -1,15 +1,15 @@
 # import libraries
-from sqlalchemy import create_engine
-from nltk import word_tokenize
-from nltk.stem import WordNetLemmatizer
-from nltk.corpus import stopwords
 import sys
 import pandas as pd
 import numpy as np
 import re
 import pickle
+from sqlalchemy import create_engine
+
 import nltk
-# nltk.download(['punkt', 'wordnet', 'stopwords'])
+from nltk import word_tokenize
+from nltk.stem import WordNetLemmatizer
+from nltk.corpus import stopwords
 
 from sklearn.pipeline import Pipeline, FeatureUnion
 from sklearn.ensemble import RandomForestClassifier
